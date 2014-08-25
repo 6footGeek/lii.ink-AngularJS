@@ -1,0 +1,80 @@
+
+<div class="container">
+
+	<div class="row">
+		<div class="box">
+			<div class="col-lg-12">
+				<!-- URL form -->
+
+				<form ng-submit="submitPost()" class="col-md-6 col-md-offset-3 form-signin" method="post" action="">
+
+					<div class="input-group">
+						<div class="input-group-addon">Liiink</div>
+						<input type="text" class="form-control" ng-model="post.url">
+						<input type="text" class="form-control" ng-model="post.title" placeholder="Title">
+
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="submit" value=:"Add Post">Submit!</button>
+						</span>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!--    results - have to add pagination it at some point -->
+<div class="container">
+	<div class="row">
+		<div class="box">
+			<div class="col-lg-12">
+				<hr>
+				<h2 class="intro-text text-center">
+					What are the <strong>latest liiinks?</strong>
+				</h2>
+				<hr>
+
+				<hr class="visible-xs">
+
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<!-- table headers -->
+							<th>URL</th>
+							<th>Admin</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						<!-- Output hrefs in table -->
+						<tr ng-repeat="post in posts">
+							<td>
+								<!-- new post repeat?! -->
+							
+								<a href="{{ post.url }}">{{ post.title }}</a>
+								<span class = "url">[{{ post.url | hostnameFromUrl }}]</span>
+								<div style = "float:right;" >
+							<a href="#/posts/{{ post.$id }}">
+							
+							<i class="glyphicon glyphicon-comment"></i></a>
+							
+							<span class="glyphicon glyphicon-chevron-up"></span>
+									<span class="glyphicon glyphicon-chevron-down"></span>
+							</div>
+							</td>
+
+
+
+
+							<td>
+								<a ng-click="deletePost(post)"><i style="color:red;" class="glyphicon glyphicon-remove"></i></a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /.container -->
